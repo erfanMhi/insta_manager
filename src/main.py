@@ -100,7 +100,7 @@ def unfollow_user(cl, username_to_unfollow):
 
 
 def update_unfollowed(unfollowed):
-    with open('unfollowed.json', 'w') as file:
+    with open(UNFOLLOWED_FILE, 'w') as file:
         json.dump(unfollowed, file)
 
 
@@ -141,12 +141,12 @@ def set_up_logging():
 
 def load_unfollowed():
     """
-    Loads the list of already unfollowed users from the 'unfollowed.json' file.
+    Loads the list of already unfollowed users from the UNFOLLOWED_FILE.
     Returns an empty list if the file doesn't exist.
     """
     unfollowed = []
     if 'unfollowed.json' in os.listdir():
-        with open('unfollowed.json', 'r') as file:
+        with open(UNFOLLOWED_FILE, 'r') as file:
             unfollowed = json.load(file)
     return unfollowed
 
